@@ -1,5 +1,7 @@
 package me.tairy.leetcode;
 
+import me.tairy.leetcode.util.MatrixUtil;
+
 /**
  * package: me.tairy.leetcode
  *
@@ -29,21 +31,11 @@ public class TransposeMatrix {
         return result;
     }
 
-    private static void printMatrix(int[][] A) {
-        for (int[] ints : A) {
-            for (int anInt : ints) {
-                System.out.printf("%d\t", anInt);
-            }
-
-            System.out.print("\n");
-        }
-    }
-
     public static void main(String[] args) {
         int[][] originMatrix = {{1, 2, 3}, {4, 5, 6}};
-        printMatrix(originMatrix);
+        MatrixUtil.printMatrix(originMatrix);
         int[][] result = transpose(originMatrix);
         System.out.println("===========");
-        printMatrix(result);
+        MatrixUtil.printMatrix(result);
     }
 }
