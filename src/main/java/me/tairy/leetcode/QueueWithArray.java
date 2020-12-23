@@ -78,6 +78,11 @@ public class QueueWithArray {
         this.front = 0;
         this.end = this.length;
         this.capacity = capacity;
+
+
+//        this.queue = Arrays.copyOf(this.queue, capacity);
+//        this.front = (this.front + this.capacity) % this.capacity;
+//        this.capacity = capacity;
     }
 
     /**
