@@ -6,7 +6,7 @@ package me.tairy.leetcode;
  * @author <tairy> tairyguo@gmail.com
  * @date 2020/12/23 下午8:51
  * <p>
- * 数组实现队列
+ * 用数组模拟双端环形队列
  */
 public class QueueWithArray {
 
