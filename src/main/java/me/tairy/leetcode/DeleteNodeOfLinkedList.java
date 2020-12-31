@@ -2,6 +2,8 @@ package me.tairy.leetcode;
 
 import me.tairy.leetcode.util.ListNode;
 
+import java.util.ArrayList;
+
 /**
  * package: me.tairy.leetcode
  *

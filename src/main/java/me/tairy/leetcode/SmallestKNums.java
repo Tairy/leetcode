@@ -1,5 +1,7 @@
 package me.tairy.leetcode;
 
+import java.util.Random;
+
 /**
  * package: me.tairy.leetcode
  *
@@ -9,38 +11,82 @@ package me.tairy.leetcode;
 public class SmallestKNums {
 
     private void quickSort(int[] arr, int left, int right) {
-        
+
     }
 
-    public int[] smallestK(int[] arr, int k) {
+    private int[] smallestK(int[] arr, int k) {
         int length = arr.length;
         int[] ret = new int[k];
 
-//        for (int i = 0; i < length; i++) {
-//            for (int j = i + 1; j < length; j++) {
-//                if (arr[i] > arr[j]) {
-//                    int tmp = arr[i];
-//                    arr[i] = arr[j];
-//                    arr[j] = tmp;
+        System.arraycopy(arr, 0, ret, 0, k);
+
+        for (int i = k; i < length; i++) {
+
+//            for (int j = k - 2; j >= 0; j--) {
+//                if (ret[k - 1] < ret[j]) {
+//                    int tmp = ret[j];
+//                    ret[j] = ret[k - 1];
+//                    ret[k - 1] = tmp;
+//                    break;
 //                }
 //            }
-//            if (i < k) {
-//                ret[i] = arr[i];
-//            } else {
-//                break;
-//            }
-//        }
 
+//            Arrays.sort(ret);
+            if (ret[k - 1] > arr[i]) {
+                ret[k - 1] = arr[i];
+            }
+        }
         return ret;
+    }
+
+    private int quickSelect(int[] arr, int k, int start, int end) {
+
+        Random random = new Random();
+        int index = random.nextInt(end - start + 1) + start;
+        int pivot = arr[index];
+        swap(arr, index, end);
+
+        int left = start, right = end;
+
+
+        while (left < right) {
+            if (arr[left++] >= right) {
+                swap(arr, --left, --right);
+            }
+        }
+
+        swap(arr, left, end);
+
+        int m = left - start;
+
+        if (m == k - 1) {
+            return pivot;
+        } else if (k <= m) {
+            return quickSelect(arr, k, start, left - 1);
+        } else {
+            return quickSelect(arr, k - m, left, end);
+        }
+    }
+
+    private void swap(int[] arr, int i, int j) {
+        arr[i] = arr[i] ^ arr[j];
+        arr[j] = arr[i] ^ arr[j];
+        arr[i] = arr[i] ^ arr[j];
     }
 
     public static void main(String[] args) {
         SmallestKNums smallestKNums = new SmallestKNums();
-        int[] nums = {62577, -220, -8737, -22, -6, 59956, 5363, -16699, 0, -10603, 64, -24528, -4818, 96, 5747, 2638, -223, 37663, -390, 35778, -4977, -3834, -56074, 7, -76, 601, -1712, -48874, 31, 3, -9417, -33152, 775, 9396, 60947, -1919, 683, -37092, -524, -8, 1458, 80, -8, 1, 7, -355, 9, 397, -30, -21019, -565, 8762, -4, 531, -211, -23702, 3, 3399, -67, 64542, 39546, 52500, -6263, 4, -16, -1, 861, 5134, 8, 63701, 40202, 43349, -4283, -3, -22721, -6, 42754, -726, 118, 51, 539, 790, -9972, 41752, 0, 31, -23957, -714, -446, 4, -61087, 84, -140, 6, 53, -48496, 9, -15357, 402, 5541, 4, 53936, 6, 3, 37591, 7, 30, -7197, -26607, 202, 140, -4, -7410, 2031, -715, 4, -60981, 365, -23620, -41, 4, -2482, -59, 5, -911, 52, 50068, 38, 61, 664, 0, -868, 8681, -8, 8, 29, 412};
-        int[] ret = smallestKNums.smallestK(nums, 131);
-        for (int j : ret) {
-            System.out.printf("%d\t", j);
-        }
-        System.out.print("\n");
+        int[] nums = {1, 3, 5, 7, 2, 4, 6, 8};
+        smallestKNums.swap(nums, 1, 3);
+//        for (int j : nums) {
+//            System.out.printf("%d\t", j);
+//        }
+//        System.out.print("\n");
+        int ret = smallestKNums.quickSelect(nums, 4, 0, nums.length - 1);
+        System.out.println(ret);
+//        for (int j : ret) {
+//            System.out.printf("%d\t", j);
+//        }
+//        System.out.print("\n");
     }
 }
