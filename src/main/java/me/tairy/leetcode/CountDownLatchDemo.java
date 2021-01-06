@@ -1,5 +1,9 @@
 package me.tairy.leetcode;
 
+import com.sun.scenario.effect.impl.state.LinearConvolveRenderState;
+
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.concurrent.CountDownLatch;
 
 /**
@@ -22,6 +26,13 @@ public class CountDownLatchDemo {
             this.runnerCountDownLatch = runnerCountDownLatch;
             this.refereeCountDownLatch = refereeCountDownLatch;
             this.id = id;
+            Deque d = new ArrayDeque();
+            d.size();
+//            if (' ' == "s ss".charAt(1)) {
+//
+//            }
+//            LinearConvolveRenderState
+
         }
 
         @Override
