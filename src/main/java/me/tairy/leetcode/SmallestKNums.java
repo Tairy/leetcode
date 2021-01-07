@@ -1,5 +1,6 @@
 package me.tairy.leetcode;
 
+import java.util.Arrays;
 import java.util.Random;
 
 /**
@@ -10,10 +11,6 @@ import java.util.Random;
  */
 public class SmallestKNums {
 
-    private void quickSort(int[] arr, int left, int right) {
-
-    }
-
     private int[] smallestK(int[] arr, int k) {
         int length = arr.length;
         int[] ret = new int[k];
@@ -21,17 +18,7 @@ public class SmallestKNums {
         System.arraycopy(arr, 0, ret, 0, k);
 
         for (int i = k; i < length; i++) {
-
-//            for (int j = k - 2; j >= 0; j--) {
-//                if (ret[k - 1] < ret[j]) {
-//                    int tmp = ret[j];
-//                    ret[j] = ret[k - 1];
-//                    ret[k - 1] = tmp;
-//                    break;
-//                }
-//            }
-
-//            Arrays.sort(ret);
+            Arrays.sort(ret);
             if (ret[k - 1] > arr[i]) {
                 ret[k - 1] = arr[i];
             }
@@ -40,7 +27,6 @@ public class SmallestKNums {
     }
 
     private int quickSelect(int[] arr, int k, int start, int end) {
-
         Random random = new Random();
         int index = random.nextInt(end - start + 1) + start;
         int pivot = arr[index];
@@ -48,9 +34,8 @@ public class SmallestKNums {
 
         int left = start, right = end;
 
-
         while (left < right) {
-            if (arr[left++] >= right) {
+            if (arr[left++] >= arr[right]) {
                 swap(arr, --left, --right);
             }
         }
@@ -77,16 +62,9 @@ public class SmallestKNums {
     public static void main(String[] args) {
         SmallestKNums smallestKNums = new SmallestKNums();
         int[] nums = {1, 3, 5, 7, 2, 4, 6, 8};
-        smallestKNums.swap(nums, 1, 3);
-//        for (int j : nums) {
-//            System.out.printf("%d\t", j);
-//        }
-//        System.out.print("\n");
+        int[] r = smallestKNums.smallestK(nums, 4);
+        System.out.println(Arrays.toString(r));
         int ret = smallestKNums.quickSelect(nums, 4, 0, nums.length - 1);
         System.out.println(ret);
-//        for (int j : ret) {
-//            System.out.printf("%d\t", j);
-//        }
-//        System.out.print("\n");
     }
 }
