@@ -1,5 +1,8 @@
 package me.tairy.leetcode;
 
+import me.tairy.leetcode.util.BinaryTree;
+import me.tairy.leetcode.util.TreeNode;
+
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -32,14 +35,14 @@ public class BinaryTreeLevelOrderTraversal {
                 if (null == head) {
                     continue;
                 }
-                list.add(head.val);
+                list.add(head.getVal());
 
-                if (null != head.left) {
-                    queue.offer(head.left);
+                if (null != head.getLeft()) {
+                    queue.offer(head.getLeft());
                 }
 
-                if (null != head.right) {
-                    queue.offer(head.right);
+                if (null != head.getRight()) {
+                    queue.offer(head.getRight());
                 }
             }
 
@@ -54,17 +57,10 @@ public class BinaryTreeLevelOrderTraversal {
 
         int[] arr = {1, 2, 3, 4, 5, 6};
 
-        List<List<Integer>> ret = binaryTreeLevelOrderTraversal.levelOrder(null);
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.init(arr);
+
+        List<List<Integer>> ret = binaryTreeLevelOrderTraversal.levelOrder(binaryTree.getRoot());
         System.out.println(ret.toString());
-    }
-
-    private class TreeNode {
-        int val;
-        TreeNode left;
-        TreeNode right;
-
-        TreeNode(int x) {
-            this.val = x;
-        }
     }
 }

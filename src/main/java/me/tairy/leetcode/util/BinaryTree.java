@@ -1,5 +1,7 @@
 package me.tairy.leetcode.util;
 
+import java.util.LinkedList;
+
 /**
  * package: me.tairy.leetcode
  *
@@ -89,21 +91,21 @@ public class BinaryTree {
 //        }
 //    }
 //
-//    private void prevOrderIteratorWithStack(TreeNode parent) {
-//        LinkedList<TreeNode> stack = new LinkedList<>();
-//        TreeNode pNode = parent;
-//
-//        while (pNode != null || !stack.isEmpty()) {
-//            if (pNode != null) {
-//                System.out.printf("%d\t", pNode.val);
-//                stack.push(pNode);
-//                pNode = pNode.left;
-//            } else {
-//                TreeNode node = stack.pop();
-//                pNode = node.right;
-//            }
-//        }
-//    }
+    private void prevOrderIteratorWithStack(TreeNode parent) {
+        LinkedList<TreeNode> stack = new LinkedList<>();
+        TreeNode pNode = parent;
+
+        while (pNode != null || !stack.isEmpty()) {
+            if (pNode != null) {
+                System.out.printf("%d\t", pNode.val);
+                stack.push(pNode);
+                pNode = pNode.left;
+            } else {
+                TreeNode node = stack.pop();
+                pNode = node.right;
+            }
+        }
+    }
 //
 //    private void midOrderIterator(TreeNode parent) {
 //        if (null != parent) {
