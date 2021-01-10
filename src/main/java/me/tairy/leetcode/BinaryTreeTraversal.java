@@ -148,7 +148,13 @@ public class BinaryTreeTraversal {
             int size = deque.size();
 
             for (int i = 0; i < size; i++) {
-                TreeNode node = deque.poll();
+                TreeNode node = null;
+
+                if (i % 2 == 0) {
+                    node = deque.pollFirst();
+                } else {
+                    node = deque.pollLast();
+                }
 
                 if (null == node) {
                     continue;
