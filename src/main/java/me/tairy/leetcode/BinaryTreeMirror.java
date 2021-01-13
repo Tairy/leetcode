@@ -13,7 +13,7 @@ import java.util.Stack;
  */
 public class BinaryTreeMirror {
 
-    public TreeNode mirrorTree(TreeNode root) {
+    private TreeNode mirrorTree(TreeNode root) {
         if (root == null) return null;
         Stack<TreeNode> stack = new Stack<TreeNode>() {{
             add(root);
