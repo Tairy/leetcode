@@ -3,7 +3,6 @@ package me.tairy.leetcode;
 import me.tairy.leetcode.util.BinaryTree;
 import me.tairy.leetcode.util.TreeNode;
 
-import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,49 +11,12 @@ import java.util.List;
  * package: me.tairy.leetcode
  *
  * @author <tairy> tairyguo@gmail.com
- * @date 2021-01-13 18:59
+ * @date 2021-01-13 19:09
  */
-public class BinaryTreeSumPathAll {
+public class BinaryTreeSumPathAllFromRoot {
 
-    private static List<String> pathSumWithStack(TreeNode root, int sum) {
-        if (null == root) {
-            return null;
-        }
-        List<String> ret = new ArrayList<>();
-        Deque<TreeNode> stack = new LinkedList<>();
-        TreeNode node = root;
-
-        while (null != node || !stack.isEmpty()) {
-            if (null != node) {
-                getPathWithStack(node, ret, sum);
-                stack.push(node);
-                node = node.getLeft();
-            } else {
-                TreeNode tNode = stack.pop();
-                node = tNode.getRight();
-            }
-        }
-        return ret;
-    }
-
-    private static List<String> pathSum(TreeNode root, int sum) {
+    private static List<String> pathSumFromRoot(TreeNode root, int sum) {
         List<String> ret = new LinkedList<>();
-        paths(root, ret, sum);
-        return ret;
-    }
-
-
-    private static void paths(TreeNode root, List<String> ret, int sum) {
-        if (null == root) {
-            return;
-        }
-
-        getPathWithStack(root, ret, sum);
-        paths(root.getLeft(), ret, sum);
-        paths(root.getRight(), ret, sum);
-    }
-
-    private static void getPathWithStack(TreeNode root, List<String> ret, int sum) {
         Deque<TreeNode> stack = new LinkedList<>();
         Deque<Integer> sums = new LinkedList<>();
         Deque<String> paths = new LinkedList<>();
@@ -84,14 +46,14 @@ public class BinaryTreeSumPathAll {
                 paths.push(path + "->" + String.valueOf(node.getRight().getVal()));
             }
         }
+
+        return ret;
     }
 
     public static void main(String[] args) {
         int[] nums = {1, 2, 3, 4, 5};
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.init(nums);
-        List<String> ret = new ArrayList<>();
-        System.out.println(pathSumWithStack(binaryTree.getRoot(), 6));
-        System.out.println(pathSum(binaryTree.getRoot(), 6));
+        System.out.println(pathSumFromRoot(binaryTree.getRoot(), 7));
     }
 }
