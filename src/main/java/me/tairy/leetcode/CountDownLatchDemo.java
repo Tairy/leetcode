@@ -1,7 +1,5 @@
 package me.tairy.leetcode;
 
-import com.sun.scenario.effect.impl.state.LinearConvolveRenderState;
-
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.concurrent.CountDownLatch;

@@ -1,14 +1,9 @@
 package me.tairy.leetcode;
 
-import sun.applet.AppletClassLoader;
-import sun.misc.Launcher;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.locks.AbstractQueuedLongSynchronizer;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class CategoryListToTree {
     public static void main(String[] args) {
@@ -20,10 +15,6 @@ public class CategoryListToTree {
         items.add(new CategoryItem(5, "连衣裙2", 4));
 
         CategoryNode root = generateCategoryTree(items);
-        ClassLoader.getSystemClassLoader();
-        Launcher launcher = Launcher.getLauncher();
-        ClassLoader extClassLoader = Launcher.getLauncher().getClassLoader();
-        ClassLoader cl = Thread.currentThread().getContextClassLoader();
         System.out.println("Hello World!");
     }
 
@@ -31,7 +22,6 @@ public class CategoryListToTree {
         int id;
         String name;
         int parentId;
-
 
 
         CategoryItem(int id, String name, int parentId) {
